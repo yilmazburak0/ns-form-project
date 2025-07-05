@@ -80,9 +80,7 @@ export const FlagIcon = styled.span`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50%;
   flex-shrink: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const CountryName = styled.span`
