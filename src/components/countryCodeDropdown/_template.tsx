@@ -10,7 +10,6 @@ import {
   DropdownItem,
   DropdownItemContent,
   FlagIcon,
-  CountryInfo,
   CountryName,
   DialCode,
   ArrowIcon,
@@ -90,15 +89,16 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
         {selectedCountry ? (
           <>
             <FlagIcon style={getFlagStyle(selectedCountry.code)} />
-            <CountryInfo>
-              <CountryName>{selectedCountry.name}</CountryName>
-              <DialCode>{selectedCountry.dial_code}</DialCode>
-            </CountryInfo>
+            <CountryName>{selectedCountry.name}</CountryName>
+            <ArrowIcon isOpen={isOpen} />
+            <DialCode>{selectedCountry.dial_code}</DialCode>
           </>
         ) : (
-          <PlaceholderText>{placeholder}</PlaceholderText>
+          <>
+            <PlaceholderText>{placeholder}</PlaceholderText>
+            <ArrowIcon isOpen={isOpen} />
+          </>
         )}
-        <ArrowIcon isOpen={isOpen} />
       </DropdownButton>
 
       {isOpen && (
@@ -111,10 +111,8 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
                 tabIndex={0}
               >
                 <FlagIcon style={getFlagStyle(country.code)} />
-                <CountryInfo>
-                  <CountryName>{country.name}</CountryName>
-                  <DialCode>{country.dial_code}</DialCode>
-                </CountryInfo>
+                <CountryName>{country.name}</CountryName>
+                <DialCode>{country.dial_code}</DialCode>
               </DropdownItemContent>
             </DropdownItem>
           ))}

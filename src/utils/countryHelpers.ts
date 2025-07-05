@@ -3,7 +3,7 @@ import { ICountry } from '@/types';
 
 
 export const getFlagUrl = (countryCode: string): string => {
-  return `https://flagcdn.com/w20/${countryCode.toLowerCase()}.png`;
+  return `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`;
 };
 
 

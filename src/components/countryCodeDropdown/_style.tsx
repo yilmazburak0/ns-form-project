@@ -3,20 +3,21 @@ import styled from '@emotion/styled';
 export const DropdownContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
 `;
 
 export const DropdownButton = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
   padding: 12px 16px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background-color: white;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 48px;
+  box-sizing: border-box;
   
   &:hover {
     border-color: #9ca3af;
@@ -75,29 +76,27 @@ export const DropdownItemContent = styled.div`
 export const FlagIcon = styled.span`
   display: inline-block;
   width: 20px;
-  height: 15px;
+  height: 20px;
   background-size: cover;
   background-position: center;
-  border-radius: 2px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
   flex-shrink: 0;
-`;
-
-export const CountryInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const CountryName = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: #1f2937;
+  flex: 1;
 `;
 
 export const DialCode = styled.span`
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
+  font-weight: 500;
+  margin-left: auto;
 `;
 
 export const ArrowIcon = styled.span<{ isOpen: boolean }>`
@@ -109,9 +108,11 @@ export const ArrowIcon = styled.span<{ isOpen: boolean }>`
   border-top: 4px solid #6b7280;
   transition: transform 0.2s ease;
   transform: ${props => props.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
+  margin-left: 8px;
 `;
 
 export const PlaceholderText = styled.span`
   color: #9ca3af;
   font-size: 14px;
+  flex: 1;
 `;

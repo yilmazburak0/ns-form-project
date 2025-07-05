@@ -13,6 +13,8 @@ export const PhoneInput = styled.input`
   background-color: white;
   font-size: 14px;
   transition: all 0.2s ease;
+  min-height: 48px;
+  box-sizing: border-box;
   
   &:hover {
     border-color: #9ca3af;
