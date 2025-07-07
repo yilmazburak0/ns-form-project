@@ -10,7 +10,6 @@ import {
   DropdownItem,
   DropdownItemContent,
   FlagIcon,
-  CountryName,
   DialCode,
   ArrowIcon,
   PlaceholderText
@@ -86,9 +85,8 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
         {selectedCountry ? (
           <>
             <FlagIcon className={`fi fi-${selectedCountry.code}`} />
-            <CountryName>{selectedCountry.name}</CountryName>
-            <ArrowIcon isOpen={isOpen} />
             <DialCode>{selectedCountry.dial_code}</DialCode>
+            <ArrowIcon isOpen={isOpen} />
           </>
         ) : (
           <>
@@ -108,7 +106,6 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
                 tabIndex={0}
               >
                <FlagIcon className={`fi fi-${country.code}`} />
-                <CountryName>{country.name}</CountryName>
                 <DialCode>{country.dial_code}</DialCode>
               </DropdownItemContent>
             </DropdownItem>

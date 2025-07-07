@@ -83,14 +83,6 @@ export const FlagIcon = styled.span`
   margin-right: 8px;
 `;
 
-
-export const CountryName = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-  flex: 1;
-`;
-
 export const DialCode = styled.span`
   font-size: 14px;
   color: #6b7280;

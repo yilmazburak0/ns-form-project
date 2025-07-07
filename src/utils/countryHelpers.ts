@@ -2,27 +2,28 @@ import { getCountries, getCountryCallingCode } from 'libphonenumber-js';
 import { ICountry } from '@/types';
 
 export const generateCountriesList = (): ICountry[] => {
-  const countries = getCountries();
-  const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  const countryCodes = getCountries();
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
-  return countries.map(code => {
+  const countriesWithNames = countryCodes.map(code => {
     try {
-      const dialCode = `+${getCountryCallingCode(code)}`;
-      const name = countryNames.of(code) || code;
-      
       return {
         code: code.toLowerCase(),
-        name,
-        dial_code: dialCode
+        dial_code: `+${getCountryCallingCode(code)}`,
+        sortName: regionNames.of(code) || code
       };
     } catch {
       return {
         code: code.toLowerCase(),
-        name: code,
-        dial_code: '+0'
+        dial_code: '+0',
+        sortName: code
       };
     }
-  }).sort((a, b) => a.name.localeCompare(b.name));
+  });
+
+  const sortedCountries = countriesWithNames.sort((a, b) => a.sortName.localeCompare(b.sortName));
+
+  return sortedCountries.map(({ code, dial_code }) => ({ code, dial_code }));
 };
 
 export const sortCountriesBySelection = (

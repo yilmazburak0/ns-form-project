@@ -7,8 +7,7 @@ import { PageContainer, ContentWrapper } from './_style';
 
 export const JobApplication = () => {
   const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>({
-    code: 'tr', 
-    name: 'Türkiye', 
+    code: 'tr',
     dial_code: '+90'
   });
   const [phoneNumber, setPhoneNumber] = useState<string>('');
