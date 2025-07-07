@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
-import { ThemedProps } from '@/types';
 
 export const PhoneInputContainer = styled.div`
   width: 100%;
   max-width: 250px;
 `;
 
-export const PhoneInput = styled.input<ThemedProps>`
+export const PhoneInput = styled.input`
   width: 100%;
   padding: 8px 16px;
   border: 1px solid ${props => props.theme.colors.neutralGray50};

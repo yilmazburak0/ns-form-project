@@ -15,10 +15,6 @@ export interface Theme {
   };
 }
 
-export interface ThemedProps {
-  theme: Theme;
-}
-
 export interface ClientThemeProviderProps {
   children: React.ReactNode;
 }

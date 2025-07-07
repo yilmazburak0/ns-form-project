@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { ThemedProps } from '@/types';
 import { FiChevronDown } from 'react-icons/fi';
 
 export const DropdownContainer = styled.div`
@@ -8,7 +7,7 @@ export const DropdownContainer = styled.div`
   max-width: 140px;
 `;
 
-export const DropdownButton = styled.div<ThemedProps>`
+export const DropdownButton = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -32,7 +31,7 @@ export const DropdownButton = styled.div<ThemedProps>`
   }
 `;
 
-export const DropdownList = styled.ul<ThemedProps>`
+export const DropdownList = styled.ul`
   position: absolute;
   top: 100%;
   left: 0;
@@ -54,7 +53,7 @@ export const DropdownItem = styled.li`
   padding: 0;
 `;
 
-export const DropdownItemContent = styled.div<ThemedProps>`
+export const DropdownItemContent = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -84,13 +83,13 @@ export const FlagIcon = styled.span`
   border-radius: 50px;
 `;
 
-export const DialCode = styled.span<ThemedProps>`
+export const DialCode = styled.span`
   font-size: 14px;
   color: ${props => props.theme.colors.gray500};
   font-weight: 500;
 `;
 
-export const PlaceholderText = styled.span<ThemedProps>`
+export const PlaceholderText = styled.span`
   color: ${props => props.theme.colors.neutralGray400};
   font-size: 14px;
   flex: 1;
@@ -104,7 +103,7 @@ export const FlagAndDialCode = styled.div`
 
 export const ChevronIcon = styled(FiChevronDown, {
   shouldForwardProp: (prop) => !['isOpen'].includes(prop)
-})<ThemedProps & { isOpen: boolean }>`
+})<{ isOpen: boolean }>`
   margin-left: auto;
   transition: transform 0.2s ease;
   transform: ${props => props.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
