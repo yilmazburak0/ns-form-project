@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { CountryCodeDropdown } from '@/components/countryCodeDropdown';
 import { PhoneNumberInput } from '@/components/phoneNumberInput';
 import { ICountry } from '@/types';
-import { generateCountriesList } from '@/utils';
 import { PageContainer, ContentWrapper } from './_style';
 
 export const JobApplication = () => {
@@ -11,7 +10,7 @@ export const JobApplication = () => {
     code: 'tr', 
     name: 'Türkiye', 
     dial_code: '+90'
-});
+  });
   const [phoneNumber, setPhoneNumber] = useState<string>('');
 
   const handleCountrySelect = (country: ICountry) => {
@@ -26,7 +25,6 @@ export const JobApplication = () => {
     <PageContainer>
       <ContentWrapper>
         <CountryCodeDropdown
-          countries={generateCountriesList()}
           onSelect={handleCountrySelect}
           selectedCountry={selectedCountry}
         />

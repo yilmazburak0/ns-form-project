@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { ICountryCodeDropdown } from './_type';
 import { ICountry } from '@/types';
-import { sortCountriesBySelection } from '@/utils';
+import { sortCountriesBySelection, generateCountriesList } from '@/utils';
 
 import {
   DropdownContainer,
@@ -17,7 +17,6 @@ import {
 } from './_style';
 
 export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
-  countries,
   selectedCountry,
   onSelect,
   placeholder = "Select a country"
@@ -25,7 +24,9 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const sortedCountriesBySelection = React.useMemo(() => 
+  const countries = useMemo(() => generateCountriesList(), []);
+
+  const sortedCountriesBySelection = useMemo(() => 
     sortCountriesBySelection(countries, selectedCountry),
     [countries, selectedCountry]
   );
@@ -85,7 +86,6 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
         {selectedCountry ? (
           <>
             <FlagIcon className={`fi fi-${selectedCountry.code}`} />
-
             <CountryName>{selectedCountry.name}</CountryName>
             <ArrowIcon isOpen={isOpen} />
             <DialCode>{selectedCountry.dial_code}</DialCode>
