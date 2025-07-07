@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ClientThemeProvider } from '@/theme';
 import "./globals.css";
 import 'flag-icons/css/flag-icons.min.css';
 
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning={true}>
-        {children}
+        <ClientThemeProvider>
+          {children}
+        </ClientThemeProvider>
       </body>
     </html>
   );

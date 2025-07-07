@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useTheme } from '@emotion/react';
 import { ICountryCodeDropdown } from './_type';
-import { ICountry } from '@/types';
+import { ICountry, Theme } from '@/types';
 import { sortCountriesBySelection, generateCountriesList } from '@/utils';
 
 import {
@@ -11,22 +12,24 @@ import {
   DropdownItemContent,
   FlagIcon,
   DialCode,
-  ArrowIcon,
-  PlaceholderText
+  PlaceholderText,
+  FlagAndDialCode,
+  ChevronIcon
 } from './_style';
 
 export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
   selectedCountry,
   onSelect,
-  placeholder = "Select a country"
+  placeholder = 'Select a country'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme() as Theme;
 
   const countries = useMemo(() => generateCountriesList(), []);
 
-  const sortedCountriesBySelection = useMemo(() => 
-    sortCountriesBySelection(countries, selectedCountry),
+  const sortedCountriesBySelection = useMemo(
+    () => sortCountriesBySelection(countries, selectedCountry),
     [countries, selectedCountry]
   );
 
@@ -81,32 +84,38 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
         role="button"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        theme={theme}
       >
         {selectedCountry ? (
           <>
-            <FlagIcon className={`fi fi-${selectedCountry.code}`} />
-            <DialCode>{selectedCountry.dial_code}</DialCode>
-            <ArrowIcon isOpen={isOpen} />
+            <FlagAndDialCode>
+              <FlagIcon className={`fi fi-${selectedCountry.code}`} />
+              <DialCode theme={theme}>{selectedCountry.dial_code}</DialCode>
+            </FlagAndDialCode>
+            <ChevronIcon theme={theme} size={20} isOpen={isOpen} />
           </>
         ) : (
           <>
-            <PlaceholderText>{placeholder}</PlaceholderText>
-            <ArrowIcon isOpen={isOpen} />
+            <PlaceholderText theme={theme}>{placeholder}</PlaceholderText>
+            <ChevronIcon  theme={theme}size={20} isOpen={isOpen} />
           </>
         )}
       </DropdownButton>
 
       {isOpen && (
-        <DropdownList role="listbox">
-          {sortedCountriesBySelection.map((country) => (
+        <DropdownList theme={theme} role="listbox">
+          {sortedCountriesBySelection.map(country => (
             <DropdownItem key={country.code} role="option">
               <DropdownItemContent
                 onClick={handleCountryItemClick(country)}
                 onKeyDown={handleCountryItemKeyDown(country)}
                 tabIndex={0}
+                theme={theme}
               >
-               <FlagIcon className={`fi fi-${country.code}`} />
-                <DialCode>{country.dial_code}</DialCode>
+                <FlagAndDialCode>
+                  <FlagIcon className={`fi fi-${country.code}`} />
+                  <DialCode theme={theme}>{country.dial_code}</DialCode>
+                </FlagAndDialCode>
               </DropdownItemContent>
             </DropdownItem>
           ))}

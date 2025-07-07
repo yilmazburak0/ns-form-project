@@ -1,39 +1,40 @@
 import styled from '@emotion/styled';
+import { ThemedProps } from '@/types';
 
 export const PhoneInputContainer = styled.div`
   width: 100%;
-  max-width: 200px;
+  max-width: 250px;
 `;
 
-export const PhoneInput = styled.input`
+export const PhoneInput = styled.input<ThemedProps>`
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  border: 1px solid ${props => props.theme.colors.neutralGray50};
   border-radius: 8px;
-  background-color: white;
+  background-color: ${props => props.theme.colors.white};
   font-size: 14px;
   transition: all 0.2s ease;
-  min-height: 48px;
+  height: 36px;
   box-sizing: border-box;
   
   &:hover {
-    border-color: #9ca3af;
+    border-color: ${props => props.theme.colors.gray400};
   }
   
   &:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+    border-color: ${props => props.theme.colors.blue500};
+    box-shadow: 0 0 0 2px ${props => props.theme.colors.blue100};
   }
   
   &:disabled {
-    background-color: #f9fafb;
-    color: #9ca3af;
+    background-color: ${props => props.theme.colors.gray100};
+    color: ${props => props.theme.colors.gray400};
     cursor: not-allowed;
   }
   
   &::placeholder {
-    color: #9ca3af;
+    color: ${props => props.theme.colors.neutralGray400};
     font-size: 14px;
   }
 `;

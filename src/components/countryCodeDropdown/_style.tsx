@@ -1,36 +1,38 @@
 import styled from '@emotion/styled';
+import { ThemedProps } from '@/types';
+import { FiChevronDown } from 'react-icons/fi';
 
 export const DropdownContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 250px;
+  max-width: 140px;
 `;
 
-export const DropdownButton = styled.div`
+export const DropdownButton = styled.div<ThemedProps>`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
-  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  border: 1px solid ${props => props.theme.colors.neutralGray50};
   border-radius: 8px;
-  background-color: white;
+  background-color: ${props => props.theme.colors.white};
   cursor: pointer;
   transition: all 0.2s ease;
-  min-height: 48px;
+  height: 36px;
   box-sizing: border-box;
-  
+
   &:hover {
-    border-color: #9ca3af;
+    border-color: ${props => props.theme.colors.gray400};
   }
-  
+
   &:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+    border-color: ${props => props.theme.colors.blue500};
+    box-shadow: 0 0 0 2px ${props => props.theme.colors.blue100};
   }
 `;
 
-export const DropdownList = styled.ul`
+export const DropdownList = styled.ul<ThemedProps>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -39,8 +41,8 @@ export const DropdownList = styled.ul`
   margin: 4px 0 0 0;
   padding: 0;
   list-style: none;
-  background-color: white;
-  border: 1px solid #d1d5db;
+  background-color: ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.neutralGray50};
   border-radius: 8px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   max-height: 200px;
@@ -52,22 +54,22 @@ export const DropdownItem = styled.li`
   padding: 0;
 `;
 
-export const DropdownItemContent = styled.div`
+export const DropdownItemContent = styled.div<ThemedProps>`
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  
+
   &:hover {
-    background-color: #f3f4f6;
+    background-color: ${props => props.theme.colors.gray100};
   }
-  
+
   &:first-of-type {
     border-radius: 8px 8px 0 0;
   }
-  
+
   &:last-of-type {
     border-radius: 0 0 8px 8px;
   }
@@ -80,30 +82,31 @@ export const FlagIcon = styled.span`
   background-size: cover;
   background-position: center;
   border-radius: 50px;
-  margin-right: 8px;
 `;
 
-export const DialCode = styled.span`
+export const DialCode = styled.span<ThemedProps>`
   font-size: 14px;
-  color: #6b7280;
+  color: ${props => props.theme.colors.gray500};
   font-weight: 500;
-  margin-left: auto;
 `;
 
-export const ArrowIcon = styled.span<{ isOpen: boolean }>`
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #6b7280;
-  transition: transform 0.2s ease;
-  transform: ${props => props.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
-  margin-left: 8px;
-`;
-
-export const PlaceholderText = styled.span`
-  color: #9ca3af;
+export const PlaceholderText = styled.span<ThemedProps>`
+  color: ${props => props.theme.colors.neutralGray400};
   font-size: 14px;
   flex: 1;
+`;
+
+export const FlagAndDialCode = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const ChevronIcon = styled(FiChevronDown, {
+  shouldForwardProp: (prop) => !['isOpen'].includes(prop)
+})<ThemedProps & { isOpen: boolean }>`
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  transform: ${props => props.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
+  color: ${props => props.theme.colors.stormBlue300};
 `;
