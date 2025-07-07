@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ICountryCodeDropdown } from './_type';
 import { ICountry } from '@/types';
-import { getFlagUrl, sortCountriesBySelection } from '@/utils';
+import { sortCountriesBySelection } from '@/utils';
 
 import {
   DropdownContainer,
@@ -72,10 +72,6 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
     }
   };
 
-  const getFlagStyle = (countryCode: string): React.CSSProperties => ({
-    backgroundImage: `url(${getFlagUrl(countryCode)})`
-  });
-
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton
@@ -88,7 +84,8 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
       >
         {selectedCountry ? (
           <>
-            <FlagIcon style={getFlagStyle(selectedCountry.code)} />
+            <FlagIcon className={`fi fi-${selectedCountry.code}`} />
+
             <CountryName>{selectedCountry.name}</CountryName>
             <ArrowIcon isOpen={isOpen} />
             <DialCode>{selectedCountry.dial_code}</DialCode>
@@ -110,7 +107,7 @@ export const CountryCodeDropdown: React.FC<ICountryCodeDropdown> = ({
                 onKeyDown={handleCountryItemKeyDown(country)}
                 tabIndex={0}
               >
-                <FlagIcon style={getFlagStyle(country.code)} />
+               <FlagIcon className={`fi fi-${country.code}`} />
                 <CountryName>{country.name}</CountryName>
                 <DialCode>{country.dial_code}</DialCode>
               </DropdownItemContent>

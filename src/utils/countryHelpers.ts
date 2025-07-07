@@ -1,18 +1,10 @@
 import { getCountries, getCountryCallingCode } from 'libphonenumber-js';
 import { ICountry } from '@/types';
 
-
-export const getFlagUrl = (countryCode: string): string => {
-  return `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`;
-};
-
-
-
 export const generateCountriesList = (): ICountry[] => {
   const countries = getCountries();
   const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
-  
   return countries.map(code => {
     try {
       const dialCode = `+${getCountryCallingCode(code)}`;
@@ -32,7 +24,6 @@ export const generateCountriesList = (): ICountry[] => {
     }
   }).sort((a, b) => a.name.localeCompare(b.name));
 };
-
 
 export const sortCountriesBySelection = (
   countries: ICountry[], 

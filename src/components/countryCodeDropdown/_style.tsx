@@ -75,13 +75,14 @@ export const DropdownItemContent = styled.div`
 
 export const FlagIcon = styled.span`
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
+  border-radius: 50px;
+  margin-right: 8px;
 `;
+
 
 export const CountryName = styled.span`
   font-size: 14px;
