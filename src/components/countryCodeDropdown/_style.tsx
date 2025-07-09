@@ -85,7 +85,7 @@ export const FlagIcon = styled.span`
 
 export const DialCode = styled.span`
   font-size: 14px;
-  color: ${props => props.theme.colors.gray500};
+  color: ${props => props.theme.colors.neutralGray400};
   font-weight: 500;
 `;
 
@@ -98,7 +98,7 @@ export const PlaceholderText = styled.span`
 export const FlagAndDialCode = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 `;
 
 export const ChevronIcon = styled(FiChevronDown, {
